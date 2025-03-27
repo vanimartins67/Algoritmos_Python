@@ -1,0 +1,7 @@
+Country.extend("Brasil, Argentina, Uruguai, Paraguai, Bolívia, Chile, Peru, Equador, Colômbia, Venezuela, Guuiana, Guiana Francesa, Suriname")
+Country.extend("Estados Unidos, Canadá, México")
+Country.extend("Belize, Costa Rica, El Salvador, Guatemala, Honduras, Nicarágua, Panamá, Antígua e Barbuda, Bahamas, Barbados, Cuba, Dominica, Granada, Haiti, Jamaica,República Dominicana, Santa Lúcia, São Cristóvão e Névis, São Vicente e Granadinas, Trinidad e Tobago")
+Country.extend("Brasília, Buenos Aires, Montevidéu, Assuncion, La Paz, Santiago, Lima, Quito, Bogotá, Caracs, Georgetown, Caiena, Paramaribo")
+Country.extend("Washington DC, Ottawa, Cidade do México")
+Country.extend("Belmopan, San José, San Salvador, Cidade da Guatemala, Tegucigalpa,Manágua, Cidade do Panamá, Saint Johns, Nassau, Bridgetown,Havana, Roseau, Saint Georges, Porto Príncipe, Kingston,Santo Domingo, Castries, Basseterre, Kingstown, Porto de Espanha")
+print(Country)
