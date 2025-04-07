@@ -1,80 +1,80 @@
-#exercícios de operações matemáticas com listas
+#exercícios de manipulação de listas
 
-#11
+#21
 minimo = [1, 2, 3, 4, 5]
 print(min(minimo))
-#12
+#22
 cinco = [1, 2, 3, 4, 5]
 cinco[2] = 0
 print(cinco)
-#13
+#23
 quatro = [1, 2, 3, 4, 5]
 quatro[0] = 0
 print(quatro)
-#14
+#24
 seis =[1, 2, 3, 4, 5, 6]
 seis[5] = 0
 print(seis)
-#15
+#25
 tres = [1, 2, 3]
 tres.remove(1)
 print(tres)
-#16
+#26
 cinco = [1, 2, 3, 4, 5]
 print(cinco.pop(4))
-#17
+#27
 quatro = [1, 2, 3, 4]
 print(quatro.pop(0))
-#18
+#28
 lista = ["papel", "caneta", "borracha"]
 lista.append("lapis")
 print(lista)
-#19
+#29
 lista = ["camisa", "calça", "tenis"]
 lista.insert(1, "camiseta")
 print(lista)
-#20
+#30
 lista1 = [1, 2, 3]
 lista2 = ["a", "b", "c"]
 lista1.extend(lista2)
 print(lista1)
-#21
+#31
 lista = [1, 2, 3, 4, 5]
 lista.reverse()
 print(lista)
-#22
+#32
 lista = [1, 2, 3, 4, 5]
 lista.sort()
 print(lista)
-#23
+#33
 lista = [1, 2, 3, 4, 5]
 lista.sort(reverse=True)
 print(lista)
-#24
+#34
 lista = [1, 2, 3, 4, 5]
 lista.index(3)
 print(lista.index(3))
-#25
+#35
 lista = [ 1, 1, 1, 2, 2, 3, 4, 4, 4, 4, 5, 6, 7, 8, 8, 9, 10]
 lista.count(4)
 print(lista.count(4))
-#26
+#36
 lista = [1, 2, 3, 4, 5]
 del lista[2]
 print(lista)
-#27
+#37
 lista1 = [1, 2, 3, 4, 5]
 lista2 = ["a", "b", "c", "d", "e"]
 lista1 = lista2.copy()
 print(lista1)
-#28
+#38
 lista = ["BRAZIL"]
 print(",".join(lista[0]))
-#29
+#39
 lista = [1, 2, 3, 4, 5]
 lista.clear()
 print(lista)
-#30
+#40
 lista = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 print(sum(lista))
 
