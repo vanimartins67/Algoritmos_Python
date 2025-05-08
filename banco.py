@@ -2,7 +2,7 @@ clientes = []
 while True:
     print("         Banco SENAC")
     print("== Cadastro de Novo Cliente ==")
-    nome = str(input("Nome completo: "))
+    nome = input("Nome completo: ")
     cpf = input("CPF: ")
     rg = input("RG: ")
     telefone = input("Telefone: ")
