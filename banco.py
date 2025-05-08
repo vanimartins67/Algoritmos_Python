@@ -3,11 +3,11 @@ while True:
     print("         Banco SENAC")
     print("== Cadastro de Novo Cliente ==")
     nome = str(input("Nome completo: "))
-    cpf = int(input("CPF: "))
+    cpf = input("CPF: ")
     rg = input("RG: ")
-    telefone = int(input("Telefone: "))
-    agencia = int(input("Número da agência: "))
-    conta = int(input("Número da conta: "))
+    telefone = input("Telefone: ")
+    agencia = input("Número da agência: ")
+    conta = input("Número da conta: ")
     saldo = float(input("Saldo inicial (R$): "))
 
     cliente = [nome, cpf, rg, telefone, agencia, conta, saldo]
@@ -31,18 +31,29 @@ while True:
         print("4 - Sair")
         opcao = input('Escolha uma opção: ')
         if opcao == "1":
-            print('Saldo atual: R$', cliente[6])
+            print("Saldo atual: R$ ", cliente[6])
+            
         elif opcao == "2":
             valor = float(input("Valor para depósito: "))
             if valor > 0:
-                cliente[6] = cliente[6] + valor
+                cliente[6] += valor
                 print("Depósito realizado com sucesso.")
-            elif opcao == "3":
-                valor = float(input("Valor para saque: "))
+            else:
+                print("Valor inválido.")
+                
+        elif opcao == "3":
+            valor = float(input("Valor para saque: "))
             if valor > 0:
-                if cliente[6] >= valor:
-                    cliente[6] = cliente[6] - valor
+                if valor <= cliente[6]:
+                    cliente[6] -= valor
                     print("Saque realizado com sucesso.")
-            elif opcao == "4":
-                print("Sessão Encerrada.\n")
-    
+                else:
+                    print("Saldo insuficiente.")
+            else:
+                print("Valor inválido.")
+                
+        elif opcao == "4":
+            print("Sessão Encerrada.\n")
+            break
+        else:
+            print("Opção inválida. Tente novamente.")
