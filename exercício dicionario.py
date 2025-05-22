@@ -1,0 +1,112 @@
+#criar dicionário de tradução
+dicionario_traducao = {
+    "amor": "love",                 "amigo": "friend",
+    "árvore": "tree",              "carro": "car",
+    "cachorro": "dog",             "gato": "cat",
+    "livro": "book",               "mesa": "table",
+    "cadeira": "chair",            "janela": "window",
+    "porta": "door",               "sol": "sun",
+    "lua": "moon",                 "estrela": "star",
+    "céu": "sky",                  "chuva": "rain",
+    "neve": "snow",                "vento": "wind",
+    "fogo": "fire",                "água": "water",
+    "terra": "earth",              "ar": "air",
+    "tempo": "time",               "dia": "day",
+    "noite": "night",              "homem": "man",
+    "mulher": "woman",             "criança": "child",
+    "família": "family",           "trabalho": "work",
+    "escola": "school",            "cidade": "city",
+    "país": "country",             "mundo": "world",
+    "comida": "food",              "bebida": "drink",
+    "pão": "bread",                "leite": "milk",
+    "arroz": "rice",               "feijão": "beans",
+    "carne": "meat",               "fruta": "fruit",
+    "maçã": "apple",               "banana": "banana",
+    "laranja": "orange",           "uva": "grape",
+    "morango": "strawberry",       "limão": "lemon",
+    "sal": "salt",                 "açúcar": "sugar",
+    "óleo": "oil",                 "manteiga": "butter",
+    "ovo": "egg",                  "peixe": "fish",
+    "passarinho": "bird",          "vaca": "cow",
+    "cavalo": "horse",             "porco": "pig",
+    "galinha": "chicken",          "cor": "color",
+    "vermelho": "red",             "azul": "blue",
+    "verde": "green",              "amarelo": "yellow",
+    "preto": "black",              "branco": "white",
+    "cinza": "gray",               "rosa": "pink",
+    "marrom": "brown",             "luz": "light",
+    "escuro": "dark",              "feliz": "happy",
+    "triste": "sad",               "medo": "fear",
+    "coragem": "courage",          "forte": "strong",
+    "fraco": "weak",               "novo": "new",
+    "velho": "old",                "bom": "good",
+    "ruim": "bad",                 "rápido": "fast",
+    "devagar": "slow",             "alto": "tall",
+    "baixo": "short",              "largo": "wide",
+    "estreito": "narrow",          "grande": "big",
+    "pequeno": "small",            "quente": "hot",
+    "frio": "cold",                "cheio": "full",
+    "vazio": "empty",              "fácil": "easy",
+    "difícil": "hard",             "perto": "near",
+    "longe": "far",                "sempre": "always",
+    "nunca": "never",              "às vezes": "sometimes",
+    "hoje": "today",               "amanhã": "tomorrow",
+    "ontem": "yesterday",          "manhã": "morning",
+    "tarde": "afternoon",          "noite (período)": "evening",
+    "meia-noite": "midnight",      "hora": "hour",
+    "minuto": "minute",            "segundo": "second",
+    "verbo": "verb",               "substantivo": "noun",
+    "adjetivo": "adjective",       "andar": "walk",
+    "correr": "run",               "comer": "eat",
+    "beber": "drink",              "ver": "see",
+    "ouvir": "hear",               "falar": "speak",
+    "dizer": "say",                "pensar": "think",
+    "sentir": "feel",              "abrir": "open",
+    "fechar": "close",             "subir": "go up",
+    "descer": "go down",           "entrar": "enter",
+    "sair": "exit",                "dormir": "sleep",
+    "acordar": "wake up",          "trazer": "bring",
+    "levar": "take",               "comprar": "buy",
+    "vender": "sell",              "pagar": "pay",
+    "receber": "receive",          "começar": "start",
+    "terminar": "finish",          "ganhar": "win",
+    "perder": "lose",              "encontrar": "find",
+    "procurar": "search",          "ajudar": "help",
+    "machucar": "hurt",            "conhecer": "meet",
+    "lembrar": "remember",         "esquecer": "forget",
+    "gostar": "like",              "odiar": "hate",
+    "esperar": "wait",             "precisar": "need",
+    "querer": "want",              "poder": "can",
+    "dever": "must",               "saber": "know",
+    "aprender": "learn",           "ensinar": "teach",
+    "brincar": "play",             "trabalhar": "work",
+    "viajar": "travel",            "dirigir": "drive",
+    "andar de bicicleta": "ride a bike", "voar": "fly",
+    "nadar": "swim",               "ficar": "stay",
+    "mudar": "change",             "viver": "live",
+    "morrer": "die",               "nascer": "be born",
+    "crescer": "grow",             "casar": "marry",
+    "chorar": "cry",               "rir": "laugh",
+    "brigar": "fight",             "beijar": "kiss",
+    "abraçar": "hug",              "ligar": "call",
+    "escrever": "write",           "ler": "read",
+    "contar": "tell",              "mostrar": "show",
+    "usar": "use"
+}
+print("Digite P para pesquisa")
+print("Digite A para adicionar palavra ao dicionário")
+print("Digite X para encerrar o sistema")
+while True:
+    funcao = input("Digite uma das opções acima: ").upper()
+    if funcao == "P": 
+        palavra = input("Digite a palavra que deseja saber: ").lower()
+        print("Tradução: ",dicionario_traducao.get(palavra,"Palavra não encontrada."))
+    elif funcao == "A":
+        add_word = input("Digite a palavra deseja adicionar: ").lower()
+        traducao = input("Digite a tradução da palavra que deseja adicionar: ").lower()
+        dicionario_traducao[add_word] = traducao
+        print(f"A palavra {add_word}, foi adicionada ao dicionário, tradução: {traducao}")
+    elif funcao == "X":
+        break
+    else:
+        print("Digite uma opção válida.")
