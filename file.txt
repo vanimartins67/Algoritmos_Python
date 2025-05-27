@@ -1,0 +1,3 @@
+teste
+teste
+& "C:/Program Files/Python313/python.exe" "c:/Users/VanessaMartins/Documents/GitHub/Algoritmos_Python/aula 26-05.py"
