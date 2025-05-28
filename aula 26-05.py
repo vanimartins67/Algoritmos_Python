@@ -15,4 +15,5 @@
 
 f = open("hello_kitty.png", "rb")
 print(f.read())
+f.close()
 
