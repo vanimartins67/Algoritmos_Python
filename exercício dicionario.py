@@ -1,4 +1,3 @@
-#criar dicionário de tradução
 dicionario_traducao = {
     "amor": "love",                 "amigo": "friend",
     "árvore": "tree",              "carro": "car",
