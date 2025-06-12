@@ -2,6 +2,7 @@ clientes = []
 passagens = []
 avioes = []
 tripulacao = []
+
 while True:
     print("\n--- SISTEMA DE VENDAS AÉREAS ---")
     print("1 - Cadastrar Cliente")
