@@ -55,14 +55,34 @@ print(primo(numero))
 
 
 # 8.	Crie uma função que inverta uma string.
+def inverter_string(s):
+    invertida = ""
+    for i in s:
+        invertida = i + invertida
+    return invertida
 
 # 9.	Crie uma função que receba uma lista de nomes e retorne apenas os nomes com mais de 5 letras.
+def nomes_longos(lista_nomes):
+    resultado = []    
+    for nome in lista_nomes: 
+        if len(nome) > 5:     
+            resultado.append(nome)    
+    return resultado 
 
 # 10.	Escreva uma função que conte quantas vogais há em uma string.
+def contar_vogais(s):
+    vogais = "aeiouAEIOU"  
+    contador = 0           
+    for i in s:         
+        if i in vogais:
+            contador += 1 
+        return contador        
 
 # 11.	Crie uma função que receba um número e retorne uma lista com todos os divisores dele.
 
 # 12.	Crie uma função que converta graus Celsius para Fahrenheit.
+def celsius_para_fahrenheit(c):
+    return c * 1.8 + 32 
 
 # 13.	Crie uma função que receba uma string e retorne a mesma string sem espaços.
 
