@@ -155,41 +155,147 @@ def lancar_dado():
   return random.randint(1, 6)
 
 # 21. Crie uma função que receba uma lista de números e retorne uma nova lista com os números elevados ao quadrado.
+def quadrados(lista):
+    return [x**2 for x in lista]
 
 # 22. Crie uma função que calcule a soma dos dígitos de um número inteiro.
+def soma_digitos(numero):
+    soma = 0
+    while numero > 0:
+        soma += numero % 10
+        numero //= 10
+    return soma
 
 # 23. Escreva uma função que receba uma frase e retorne a quantidade de palavras.
+def contar_palavras(frase):
+    return len(frase.split())
 
 # 24. Crie uma função que substitua todas as vogais de uma string por "*".
+def substituir_vogais(s):
+    vogais = "aeiouAEIOU"
+    resultado = ""
+    for i in s:
+        if i in vogais:
+            resultado += "*"
+        else:
+            resultado += i
+    return resultado
 
 # 25. Crie uma função que receba uma lista e retorne os elementos únicos (sem usar set).
+def elementos_unicos(lista):
+    unicos = []
+    for item in lista:
+        if item not in unicos:
+            unicos.append(item)
+    return unicos
 
 # 26. Crie uma função que receba uma lista e um número n, e retorne os n maiores valores da lista.
+def n_maiores(lista, n):
+    lista_ordenada = sorted(lista, reverse=True)
+    return lista_ordenada[:n]
 
 # 27. Escreva uma função que calcule a área de um triângulo (base × altura ÷ 2).
+def area_triangulo(base, altura):
+    return (base * altura) / 2
 
 # 28. Crie uma função recursiva para calcular o fatorial de um número.
+def fatorial_recursivo(n):
+    if n == 0 or n == 1:
+        return 1
+    else:
+        return n * fatorial_recursivo(n - 1)
 
 # 29. Crie uma função recursiva que calcule o n-ésimo número da sequência de Fibonacci.
+def fibonacci(n):
+    if n <= 0:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        return fibonacci(n - 1) + fibonacci(n - 2)
 
 # 30. Escreva uma função que embaralhe os caracteres de uma string (use random.shuffle).
+import random
+def embaralhar_string(s):
+    lista = list(s)
+    random.shuffle(lista)
+    return ''.join(lista)
 
 # 31. Crie uma função que simule uma calculadora simples (operações: +, -, *, /), com três parâmetros: número 1, número 2 e operação.
+def calculadora(num1, num2, operacao):
+    if operacao == '+':
+        return num1 + num2
+    elif operacao == '-':
+        return num1 - num2
+    elif operacao == '*':
+        return num1 * num2
+    elif operacao == '/':
+        if num2 != 0:
+            return num1 / num2
+        else:
+            return "Erro: Divisão por zero"
+    else:
+        return "Operação inválida"
 
 # 32. Crie uma função que retorne os números pares de uma lista usando list comprehension.
+def numeros_pares(lista):
+    return [x for x in lista if x % 2 == 0]
 
 # 33. Escreva uma função que recebe um número decimal e retorna sua representação binária.
+def decimal_para_binario(numero):
+    if numero == 0:
+        return "0"
+    binario = ""
+    while numero > 0:
+        binario = str(numero % 2) + binario
+        numero //= 2
+    return binario
 
 # 34. Escreva uma função que receba uma lista e retorne um dicionário com a contagem de cada elemento.
+def contar_elementos(lista):
+    contagem = {}
+    for item in lista:
+        if item in contagem:
+            contagem[item] += 1
+        else:
+            contagem[item] = 1
+    return contagem
 
 # 35. Crie uma função que receba uma data (dia, mês, ano) e diga se ela é válida (considere apenas datas do calendário gregoriano, sem considerar anos bissextos).
+def data_valida(dia, mes, ano):
+    if mes < 1 or mes > 12:
+        return False
+    if dia < 1 or (mes == 2 and dia > 28) or (mes in [4, 6, 9, 11] and dia > 30) or (mes in [1, 3, 5, 7, 8, 10, 12] and dia > 31):
+        return False
+    return True
 
 # 36. Escreva uma função que identifique o segundo maior número em uma lista.
+def segundo_maior(lista):
+    if len(lista) < 2:
+        return None
+    lista_ordenada = sorted(list(set(lista)))
+    return lista_ordenada[-2]  
 
 # 37. Crie uma função que receba uma lista de strings e retorne a maior delas.
+def maior_string(lista):
+    if not lista:
+        return None
+    maior = lista[0]
+    for string in lista:
+        if len(string) > len(maior):
+            maior = string
+    return maior
 
 # 38. Escreva uma função que calcule a distância entre dois pontos (x1, y1) e (x2, y2).
+import math
+def distancia_pontos(x1, y1, x2, y2):
+    return math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2)
 
 # 39. Crie uma função que receba o valor de uma compra e retorne o valor com 10% de desconto.
+def calcular_desconto(valor):
+    desconto = valor * 0.10
+    return valor - desconto
 
 # 40. Crie uma função que calcule juros compostos: montante = capital * (1 + taxa) ** tempo.
+def juros_compostos(capital, taxa, tempo):
+    return capital * (1 + taxa) ** tempo
