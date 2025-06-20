@@ -299,3 +299,90 @@ def calcular_desconto(valor):
 # 40. Crie uma função que calcule juros compostos: montante = capital * (1 + taxa) ** tempo.
 def juros_compostos(capital, taxa, tempo):
     return capital * (1 + taxa) ** tempo
+
+# 41. Crie uma função decoradora que registre o tempo de execução de outra função.
+import time
+def decorador_tempo(funcao):
+    def wrapper(*args, **kwargs):
+        inicio = time.time()
+        resultado = funcao(*args, **kwargs)
+        fim = time.time()
+        print(f"Tempo de execução: {fim - inicio:.4f} segundos")
+        return resultado
+    return wrapper
+
+# 42. Crie uma função que retorne uma função interna (closure) que acumula valores.
+def acumulador():
+    total = 0
+    def adicionar(valor):
+        nonlocal total
+        total += valor
+        return total
+    return adicionar
+
+# 43. Crie uma função que receba um CPF em formato string e valide-o.
+def validar_cpf(cpf):
+    cpf = ''.join(c for c in cpf if c.isdigit())
+    if len(cpf) != 11 or len(set(cpf)) == 1:
+        return False
+    soma = 0
+    for i in range(9):
+        soma += int(cpf[i]) * (10 - i)
+    digito1 = (soma * 10) % 11
+    digito1 = digito1 if digito1 < 10 else 0
+    soma = 0
+    for i in range(10):
+        soma += int(cpf[i]) * (11 - i)
+    digito2 = (soma * 10) % 11
+    digito2 = digito2 if digito2 < 10 else 0
+    return cpf[-2:] == f"{digito1}{digito2}"
+
+# 44. Escreva uma função que leia um arquivo texto e conte quantas palavras ele possui.
+def contar_palavras_arquivo(nome_arquivo):
+    try:
+        with open(nome_arquivo, "r") as arquivo:
+            conteudo = arquivo.read()
+            palavras = conteudo.split()
+            return len(palavras)
+    except FileNotFoundError:
+        return "Arquivo não encontrado."
+
+# 45. Crie uma função que use filter() e lambda para filtrar números maiores que 10 de uma lista.
+def filtrar_maiores_que_dez(lista):
+    return list(filter(lambda x: x > 10, lista))
+
+# 46. Escreva uma função que utilize zip para unir duas listas em um dicionário.
+def unir_listas_em_dicionario(lista1, lista2):
+    return dict(zip(lista1, lista2))
+
+# 47. Escreva uma função que leia uma matriz (lista de listas) e retorne sua transposta.
+def transposta(matriz):
+    return [list(linha) for linha in zip(*matriz)]
+
+# 48.Crie uma função que gere senhas seguras com letras, números e símbolos (use random.choice).
+import random
+def gerar_senha(tamanho=12):
+    caracteres = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()"
+    senha = ''.join(random.choice(caracteres) for _ in range(tamanho))
+    return senha
+
+# 49. Crie uma função que detecte anagramas entre duas palavras.
+def sao_anagramas(palavra1, palavra2):
+    return sorted(palavra1) == sorted(palavra2)
+
+# 50. Crie uma função que verifique se uma Sudoku 9x9 está corretamente preenchida (sem números repetidos por linha, coluna e região 3x3).
+def validar_sudoku(tabuleiro):
+    for linha in tabuleiro:
+        if tem_repeticao(linha):
+            return False
+    for coluna in zip(*tabuleiro):
+        if tem_repeticao(coluna):
+            return False
+    for i in (0, 3, 6):
+        for j in (0, 3, 6):
+            bloco = [tabuleiro[x][y] for x in range(i, i+3) 
+                                for y in range(j, j+3)]
+            if tem_repeticao(bloco):
+                return False
+    return True
+
