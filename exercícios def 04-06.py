@@ -385,4 +385,7 @@ def validar_sudoku(tabuleiro):
             if tem_repeticao(bloco):
                 return False
     return True
+def tem_repeticao(lista):
+    numeros = [x for x in lista if isinstance(x, int) and x != 0]
+    return len(numeros) != len(set(numeros))
 
