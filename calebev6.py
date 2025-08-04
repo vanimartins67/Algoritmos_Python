@@ -1,20 +1,17 @@
-# SISTEMA COMPLETO PARA "CONSTRUÇÃO FÁCIL" COM SALVAMENTO AUTOMÁTICO
 import os
 from datetime import datetime
 
-# Arquivos de dados
 ARQUIVO_PRODUTOS = "produtos.txt"
 ARQUIVO_VENDEDORES = "vendedores.txt"
 ARQUIVO_CLIENTES = "clientes.txt"
 ARQUIVO_VENDAS = "vendas.txt"
 
-# Dados em memória
 produtos = {}
 vendedores = {}
 clientes = {}
 vendas = []
 
-# --- FUNÇÕES DE VALIDAÇÃO ---
+#VALIDAÇÃO
 def validar_cpf(cpf):
     if len(cpf) != 11 or not cpf.isdigit():
         return False
@@ -46,7 +43,7 @@ def obter_data_valida():
         else:
             print("Formato incorreto. Use DD/MM/AAAA.")
 
-# --- PERSISTÊNCIA ---
+#PERSISTÊNCIA
 def salvar_dados():
     try:
         with open(ARQUIVO_PRODUTOS, 'w') as f:
@@ -132,7 +129,7 @@ def carregar_dados():
     except:
         return False
 
-# --- CADASTROS (COM SALVAMENTO AUTOMÁTICO) ---
+#CADASTROS
 def cadastrar_cliente():
     print("\n--- CADASTRAR CLIENTE ---")
     cpf = input("CPF (11 dígitos): ").strip()
@@ -188,7 +185,7 @@ def cadastrar_vendedor():
     salvar_automaticamente()
     print(f"Vendedor {nome} cadastrado!")
 
-# --- OPERAÇÕES DA LOJA (COM SALVAMENTO AUTOMÁTICO) ---
+#OPERAÇÕES DA LOJA
 def realizar_venda():
     print("\n--- REALIZAR VENDA ---")
     if not produtos:
@@ -286,7 +283,7 @@ def realizar_venda():
     print(f"\nVENDA CONCLUÍDA! Total: R$ {total:.2f}")
     print(f"Comissão do vendedor: R$ {comissao:.2f}")
 
-# --- RELATÓRIOS ---
+#RELATÓRIOS
 def relatorio_estoque():
     print("\n--- RELATÓRIO DE ESTOQUE ---")
     for cod, prod in produtos.items():
@@ -326,7 +323,7 @@ def relatorio_clientes():
         print(f"E-mail: {cli['email']}")
         print(f"Endereço: {cli['endereco']}")
 
-# --- MENU PRINCIPAL ---
+#MENU PRINCIPAL
 def menu_principal():
     carregar_dados()
     
@@ -364,12 +361,11 @@ def menu_principal():
         elif opcao == "8":
             relatorio_clientes()
         elif opcao == "0":
-            print("Saindo...")  # Dados já estão salvos automaticamente
+            print("Saindo...")  
             break
         else:
             print("Opção inválida!")
 
-# INICIO DO SISTEMA
+#MAIN
 if __name__ == "__main__":
     menu_principal()
-# Fim do sistema
