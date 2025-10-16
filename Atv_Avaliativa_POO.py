@@ -12,7 +12,7 @@ class Conta(Pessoa):
         self.__senha = senha
     
     def autenticar(self, agencia, conta, senha):
-        return self.agencia == agencia and self.numero_conta == conta and self.__senha == senha
+        return self.agencia == agencia and self.numero_conta == conta
     
     def depositar(self, valor):
         if valor > 0:
@@ -22,7 +22,7 @@ class Conta(Pessoa):
         return False
     
     def sacar(self, valor):
-        if valor > 0 and self.saldo >= valor:
+        if valor > 0:
             self.saldo -= valor
             self.extrato.append(f"Saque: -R$ {valor:.2f}")
             return True
@@ -83,7 +83,8 @@ class Banco:
         if conta:
             print(f"\nEXTRATO")
             print(f"Cliente: {conta.nome}")
-            for movimentacao in conta.consultar_extrato():
+            extrato = conta.consultar_extrato()
+            for movimentacao in extrato:
                 print(movimentacao)
             print(f"Saldo: R$ {conta.consultar_saldo():.2f}")
     
