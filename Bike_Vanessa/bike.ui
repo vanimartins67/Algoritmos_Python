@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Bicicleta</class>
+ <widget class="QMainWindow" name="Bicicleta">
+  <property name="windowTitle">
+   <string>Bicicleta</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout">
+
+    <item>
+     <widget class="QLineEdit" name="inputMarca">
+      <property name="placeholderText">
+       <string>Marca</string>
+      </property>
+     </widget>
+    </item>
+
+    <item>
+     <widget class="QLineEdit" name="inputModelo">
+      <property name="placeholderText">
+       <string>Modelo</string>
+      </property>
+     </widget>
+    </item>
+
+    <item>
+     <widget class="QLineEdit" name="inputCor">
+      <property name="placeholderText">
+       <string>Cor</string>
+      </property>
+     </widget>
+    </item>
+
+    <item>
+     <widget class="QPushButton" name="btnProximo">
+      <property name="text">
+       <string>Próximo</string>
+      </property>
+     </widget>
+    </item>
+
+   </layout>
+  </widget>
+ </widget>
+</ui>
