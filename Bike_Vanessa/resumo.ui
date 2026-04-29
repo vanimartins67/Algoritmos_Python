@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Resumo</class>
+ <widget class="QMainWindow" name="Resumo">
+  <property name="windowTitle">
+   <string>Resumo</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout">
+
+    <item>
+     <widget class="QLabel" name="labelResumo">
+      <property name="text">
+       <string>Resumo aparecerá aqui</string>
+      </property>
+     </widget>
+    </item>
+
+   </layout>
+  </widget>
+ </widget>
+</ui>
