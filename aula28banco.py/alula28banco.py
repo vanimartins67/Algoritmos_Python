@@ -1,68 +1,88 @@
-import mysql.connector
-from db import conectar
 from flask import Flask, request, jsonify
+from db import conectar 
 
-app = Flask (__name__)
+app = Flask(__name__)
 
-
-@app.route("/alunos", methods = ["GET"])
+# --- ROTA GET: Listar todos os alunos ---
+@app.route('/alunos', methods=['GET'])
 def get_alunos():
     conexao = conectar()
-    cursor = conexao.cursor()
+    cursor = conexao.cursor(dictionary=True) 
+    
+    try:
+        cursor.execute("SELECT * FROM alunos")
+        lista_alunos = cursor.fetchall()
+        return jsonify(lista_alunos), 200
+    except Exception as e:
+        return jsonify({"erro": str(e)}), 500
+    finally:
+        cursor.close()
+        conexao.close()
 
-    cursor.execute("select * from alunos")
-    dados = cursor.fetchall()
+# --- ROTA POST: Adicionar um novo aluno ---
+@app.route('/alunos', methods=['POST'])
+def criar_aluno():
+    dados = request.get_json()
+    nome = dados.get('nome')
+    curso = dados.get('curso')
 
-    aluno = []
-    for alunos in dados:
-        aluno.append({
-            "id": alunos[0],
-            "nome": alunos[1],
-            "idade": alunos[2]
-        })
-        #print(f"ID: {alunos[0]} | Nome: {alunos[1]} | Idade: {alunos[2]}")
+    if not nome or not curso:
+        return jsonify({"erro": "Campos 'nome' e 'curso' são obrigatórios"}), 400
 
-    cursor.close()
-    conexao.close()
-
-    return jsonify(aluno)
-
-def post_aluno():
     conexao = conectar()
     cursor = conexao.cursor()
 
-    cursor.execute("insert into alunos (nome, idade) values (%s, %s)", (input("Digite o nome do aluno: "), input ("Digite a idade do aluno: ")))
-    conexao.commit()
+    try:
+        sql = "INSERT INTO alunos (nome, curso) VALUES (%s, %s)"
+        cursor.execute(sql, (nome, curso))
+        conexao.commit() 
+        return jsonify({"mensagem": "Aluno cadastrado com sucesso!"}), 201
+    except Exception as e:
+        return jsonify({"erro": str(e)}), 500
+    finally:
+        cursor.close()
+        conexao.close()
 
-    print("Aluno adicionado com sucesso!")
+# -- ROTA PUT -- #
+@app.route("/alunos/<int:id>", methods=["PUT"])
+def put_aluno(id):
+    dados=request.json
+    nome=dados["nome"]
+    idade=dados["idade"]
+
+
+    conexao=conectar()
+    cursor=conexao.cursor()
+
+    sql="UPDATE alunos SET nome=%s, idade=%s WHERE id=%s"
+    cursor.execute(sql,(nome,idade,id))
+    conexao.commit()
 
     cursor.close()
     conexao.close()
 
-def put_aluno():
+    return jsonify({"mensagem": "Aluno atualizado"})
+
+# --- ROTA DELETE: Remover um aluno pelo ID ---
+@app.route('/alunos/<int:id_aluno>', methods=['DELETE'])
+def deletar_aluno(id_aluno):
     conexao = conectar()
     cursor = conexao.cursor()
 
-    cursor.execute("update alunos set nome = %s, idade = %s where id = %s", (input("Digite o nome do aluno: "), input ("Digite a idade do aluno: "), int(input("Digite o ID: "))))
-    conexao.commit()
+    try:
+        sql = "DELETE FROM alunos WHERE id = %s"
+        cursor.execute(sql, (id_aluno,))
+        conexao.commit()
 
-    print("Aluno atualizado!")
+        if cursor.rowcount == 0:
+            return jsonify({"erro": "Aluno não encontrado"}), 404
 
-    cursor.close()
-    conexao.close()
+        return jsonify({"mensagem": f"Aluno {id_aluno} removido!"}), 200
+    except Exception as e:
+        return jsonify({"erro": str(e)}), 500
+    finally:
+        cursor.close()
+        conexao.close()
 
-def delete_aluno():
-    conexao = conectar()
-    cursor = conexao.cursor()
-
-    cursor.execute("delete from alunos where id = %s", (int(input("Digite o ID do aluno: "))))
-    conexao.commit()
-
-    print("Aluno deletado!")
-
-    cursor.close()
-    conexao.close()
-
-
-if __name__ == "__main__":
-    app.run(debug = True)
+if __name__ == '__main__':
+    app.run(debug=True)
